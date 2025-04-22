@@ -1,0 +1,203 @@
+/* Container for the entire chat */
+.container {
+  position: fixed;
+  bottom: 200px;
+  right: 300px;
+  z-index: 1000;
+}
+
+/* Chat container (hidden by default, shown when toggled) */
+.chat-container {
+  position: fixed;
+  bottom: 250px;
+  right: 350px;
+  z-index: 1000;
+  width: 0; /* Initially collapsed */
+  height: 0; /* Initially collapsed */
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0; /* No padding when collapsed */
+  opacity: 0; /* Initially hidden */
+  transform: translateY(20px) scale(0.9); /* Start slightly below and shrink */
+  transition: opacity 0.6s ease, transform 0.6s ease, width 0.6s ease,
+    height 0.6s ease, padding 0.6s ease; /* Smooth transition for all properties */
+}
+
+.chat-container.open {
+  opacity: 1; /* Fully visible */
+  transform: translateY(0) scale(1); /* Move to original position and full size */
+  width: 400px; /* Full width */
+  height: 500px; /* Full height */
+  padding: 10px; /* Add padding when expanded */
+}
+
+.chat-container.close {
+  opacity: 0; /* Hidden */
+  transform: translateY(20px) scale(0.9); /* Move down and shrink */
+  width: 0; /* Collapse width */
+  height: 0; /* Collapse height */
+  padding: 0; /* Remove padding when collapsed */
+}
+
+/* Styling the scrollbar for the message area */
+.message-area {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #ccc transparent; /* For Firefox */
+}
+
+/* For WebKit browsers (Chrome, Edge, Safari) */
+.message-area::-webkit-scrollbar {
+  width: 6px; /* Thin scrollbar width */
+}
+
+.message-area::-webkit-scrollbar-track {
+  background: transparent; /* Transparent track */
+}
+
+.message-area::-webkit-scrollbar-thumb {
+  background-color: #ccc; /* Scrollbar color */
+  border-radius: 10px; /* Rounded edges */
+}
+
+.message-area::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa; /* Darker color on hover */
+}
+
+.ai-message,
+.user-message {
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  max-width: 85%; /* Maximum width for messages */
+  width: fit-content; /* Adjust width to content */
+  word-wrap: break-word; /* Wrap long words */
+}
+
+.ai-message {
+  background-color: #e0e0e0;
+  align-self: flex-start;
+}
+
+.ai-message::before {
+  content: "🤖"; /* Small robot icon for AI message */
+  margin-right: 8px;
+}
+
+.user-message {
+  background-color: #007bff;
+  color: white;
+  align-self: flex-end;
+  text-align: left; /* Align text to the left */
+  margin-left: auto; /* Push the message to the right */
+}
+
+/* Input area styling */
+.input-area {
+  display: flex;
+  gap: 10px;
+}
+
+.message-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.send-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.send-button:hover {
+  background-color: #0056b3;
+}
+
+/* Message icon button */
+.message-icon {
+  position: fixed;
+  bottom: 200px;
+  right: 300px;
+  z-index: 1000;
+  width: 50px;
+  height: 50px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.message-icon:hover {
+  background-color: #0056b3;
+}
+
+/* Typing indicator for user */
+.user-typing-indicator {
+  font-size: 14px;
+  color: #555;
+  font-style: italic;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Align to the right */
+  text-align: right;
+}
+
+/* Typing indicator for AI */
+.ai-typing-indicator {
+  font-size: 14px;
+  color: #555;
+  font-style: italic;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Align to the left */
+  text-align: left;
+}
+
+/* .user-typing-indicator::after,
+.ai-typing-indicator::after {
+  content: "...";
+  display: inline-block;
+  margin-left: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  animation: dots-animation 1.5s infinite;
+} */
+
+/* /* Animation for the "..." 
+@keyframes dots-animation {
+  0% {
+    content: ".";
+  }
+  33% {
+    content: "..";
+  }
+  66% {
+    content: "...";
+  }
+  100% {
+    content: ".";
+  }
+}
+ */
