@@ -136,12 +136,6 @@ OPENAI_API_KEY=your-secret-key
 
 ---
 
-## 📄 License
-
-MIT
-
----
-
 ## 🙋 Questions?
 
 Feel free to open an issue or contact me on [GitHub](https://github.com/gangadhar341/ai-chat-bot/issues).
